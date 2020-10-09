@@ -1,0 +1,17 @@
+#!/bin/bash
+#git branch remove local and remote
+if [ "$1" == "master" ]; then
+  echo "master can not be removed"
+  exit
+fi
+
+exists=$(git show-ref refs/heads/$1)
+if [ -n "$exists" ]; then
+  echo -e "\033[0;31m[gbs]remove branch local $1"
+  git branch -D $1
+  echo -e "\033[0;31m[gbs]remove branch origin $1"
+  git push origin --delete $1
+else
+  echo -e "\033[0;31m[gbs]branch $1 doesn´t exists"
+fi
+exit
