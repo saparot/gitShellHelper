@@ -1,0 +1,8 @@
+#!/bin/bash
+#current="$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')"
+current="$(git branch --show-current)"
+echo -e "\033[1;34m[gbs]\033[1;33m update branch \033[1;34m $current \033[1;33m from upstream using rebase\033[0m"
+git pull upstream/$current
+git rebase upstream/$current
+echo -e "\033[1;34m[gbs] \033[1;32mdone.\033[0m"
+exit
