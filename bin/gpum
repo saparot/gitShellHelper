@@ -1,0 +1,8 @@
+#!/bin/bash
+#git branch rebase update
+current="$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')"
+
+echo -e "\033[1;34m[gpum]\033[1;33m start updating master into  branch ..$current..\033[0m"
+git pull upstream master
+echo -e "\033[1;34m[gpum] \033[1;32mdone.\033[0m"
+exit
